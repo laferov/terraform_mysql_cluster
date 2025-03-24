@@ -1,9 +1,7 @@
 resource "openstack_compute_instance_v2" "server1_master" {
   name              = "server1_master"
   flavor_id         = "1002"
-  #key_pair          = selectel_vpc_keypair_v2.keypair_1.name
   availability_zone = var.availability_zone
-  #user_data = file("./metadata/percona.sh")
   user_data = "${local.common_user_data}\n${local.node_user_data}\n${local.percona_master_user_data}"
 
   network {
@@ -25,9 +23,7 @@ resource "openstack_compute_instance_v2" "server1_master" {
 resource "openstack_compute_instance_v2" "server2" {
   name              = "server2"
   flavor_id         = "1002"
-  #key_pair          = selectel_vpc_keypair_v2.keypair_1.name
   availability_zone = var.availability_zone
-  #user_data = file("./metadata/percona.sh")
   user_data = "${local.common_user_data}\n${local.node_user_data}"
 
   network {
@@ -48,9 +44,7 @@ resource "openstack_compute_instance_v2" "server2" {
 resource "openstack_compute_instance_v2" "server3" {
   name              = "server3"
   flavor_id         = "1002"
-  #key_pair          = selectel_vpc_keypair_v2.keypair_1.name
   availability_zone = var.availability_zone
-  #user_data = file("./metadata/percona.sh")
   user_data = "${local.common_user_data}\n${local.node_user_data}"
 
   network {
@@ -71,9 +65,7 @@ resource "openstack_compute_instance_v2" "server3" {
 resource "openstack_compute_instance_v2" "server-bastion" {
   name              = "server-bastion"
   flavor_id         = "1002"
-  #key_pair          = selectel_vpc_keypair_v2.keypair_1.name
   availability_zone = var.availability_zone
-  #user_data = file("./metadata/percona.sh")
   user_data = "${local.common_user_data}\n${local.bastion_user_data}"
 
   network {
